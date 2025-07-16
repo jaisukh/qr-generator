@@ -95,8 +95,8 @@ app.get('/qrcode/:id', async (req, res) => {
   if (!file) {
     return res.status(404).send('File not found');
   }
-  // Use the local network IP address for the download URL
-  const downloadUrl = `http://192.168.1.33:3001/download/${fileId}`;
+  // New (Render public URL)
+  const downloadUrl = `https://qr-generator-sgsg.onrender.com/download/${fileId}`;
   try {
     const qr = await QRCode.toDataURL(downloadUrl);
     res.type('html').send(`<img src='${qr}' alt='QR Code for download' />`);
