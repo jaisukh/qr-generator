@@ -26,13 +26,13 @@ function App() {
     try {
       const formData = new FormData();
       formData.append('pdf', file);
-      const res = await axios.post('http://localhost:3001/upload', formData, {
+      const res = await axios.post('https://qr-generator-sgsg.onrender.com/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       const url = res.data.downloadUrl;
-      setDownloadUrl(`http://localhost:3001${url}`);
+      setDownloadUrl(`https://qr-generator-sgsg.onrender.com${url}`);
       // Fetch QR code
-      const qrRes = await axios.get(`http://localhost:3001/qrcode/${url.split('/').pop()}`);
+      const qrRes = await axios.get(`https://qr-generator-sgsg.onrender.com/qrcode/${url.split('/').pop()}`);
       setQrCodeHtml(qrRes.data);
     } catch (err) {
       setError('Upload failed. Please try again.');
